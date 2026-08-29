@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RISEK Opciones de Menu</title>
+  <style>
+    :root {
+      --red:#e30613;
+      --blue:#0d6efd;
+      --dark:#151923;
+      --ink:#111827;
+      --muted:#64748b;
+      --line:#d9dee7;
+      --bg:#eef2f6;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Segoe UI", Arial, sans-serif; background:#111827; color:var(--ink); }
+    .screen { width:1366px; height:768px; background:var(--bg); overflow:hidden; page-break-after:always; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .logo { width:46px; height:46px; border-radius:8px; display:grid; place-items:center; background:var(--red); color:white; font-weight:950; font-size:24px; }
+    .brand small { color:rgba(255,255,255,.62); }
+    .topbar { height:72px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; background:#fff; border-bottom:1px solid var(--line); }
+    .topbar.dark { color:white; background:#212529; border-bottom:0; }
+    .pill { min-height:28px; border-radius:999px; padding:0 10px; display:inline-flex; align-items:center; background:#dcfce7; color:#166534; font-size:12px; font-weight:900; }
+    .btn { height:38px; border-radius:6px; border:1px solid var(--line); padding:0 14px; background:#fff; font-weight:850; }
+    .btn.red { background:var(--red); border-color:var(--red); color:white; }
+    .content { padding:22px; }
+    .hero { min-height:170px; border-radius:8px; padding:24px; color:white; background:linear-gradient(115deg,rgba(12,16,24,.97),rgba(12,16,24,.58),rgba(227,6,19,.35)),url("../app/static/assets/login-gerencial-risek.png") center/cover; }
+    .hero h1 { margin:0; font-size:42px; }
+    .hero p { color:rgba(255,255,255,.75); max-width:720px; }
+    .cards { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:14px; }
+    .card { min-height:112px; border:1px solid var(--line); border-radius:8px; background:#fff; padding:16px; box-shadow:0 8px 24px rgba(15,23,42,.05); }
+    .card span { color:var(--muted); font-size:13px; font-weight:850; }
+    .card strong { display:block; margin-top:8px; font-size:28px; }
+    .layout-side { display:grid; grid-template-columns:286px 1fr; height:100%; }
+    .sidebar { padding:18px; color:white; background:linear-gradient(180deg,#212529,#111827); }
+    .side-brand { padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,.14); }
+    .acc-head { height:39px; margin:12px 0 6px; padding:0 10px; border-radius:6px; display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.12); font-size:12px; font-weight:950; text-transform:uppercase; }
+    .acc-head:after { content:"v"; color:rgba(255,255,255,.58); }
+    .acc-item { height:34px; margin:0 0 5px 13px; padding:0 9px; border-radius:6px; display:flex; align-items:center; gap:8px; background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.08); color:rgba(255,255,255,.88); font-size:12px; font-weight:850; }
+    .acc-item.active { background:var(--blue); color:white; box-shadow:0 8px 18px rgba(13,110,253,.22); }
+    .acc-item b { width:24px; height:24px; border-radius:6px; display:grid; place-items:center; background:rgba(255,255,255,.14); font-size:10px; }
+    .option-label { position:absolute; right:24px; top:18px; border-radius:999px; padding:7px 12px; color:white; background:var(--red); font-size:12px; font-weight:950; }
+    .screen { position:relative; }
+    .topnav { display:flex; align-items:center; gap:8px; }
+    .topnav > div { height:38px; border-radius:6px; padding:0 12px; display:flex; align-items:center; gap:7px; color:#fff; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12); font-size:13px; font-weight:850; }
+    .topnav > div.active { background:var(--blue); }
+    .dropdown-row { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; padding:14px 24px; background:#f8fafc; border-bottom:1px solid var(--line); }
+    .drop-card { border:1px solid var(--line); border-radius:8px; background:white; padding:12px; min-height:86px; }
+    .drop-card b { display:block; margin-bottom:8px; }
+    .drop-card span { display:inline-flex; margin:0 5px 6px 0; padding:4px 8px; border-radius:999px; background:#f1f5f9; color:#334155; font-size:11px; font-weight:850; }
+    .compact-layout { display:grid; grid-template-columns:74px 1fr; height:696px; }
+    .rail { padding:14px 10px; background:#111827; display:grid; align-content:start; gap:10px; }
+    .rail .logo { width:52px; height:52px; }
+    .rail-btn { width:52px; height:52px; border-radius:8px; display:grid; place-items:center; color:white; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.1); font-size:12px; font-weight:950; }
+    .rail-btn.active { background:var(--red); }
+    .context-menu { height:62px; display:flex; align-items:center; gap:10px; padding:0 20px; background:#fff; border-bottom:1px solid var(--line); }
+    .context-menu div { height:36px; border-radius:999px; padding:0 13px; display:flex; align-items:center; background:#f1f5f9; color:#334155; font-size:13px; font-weight:850; }
+    .context-menu div.active { background:#0d6efd; color:#fff; }
+    .mega { padding:22px; }
+    .mega-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .mega-card { min-height:178px; border-radius:8px; padding:16px; background:#fff; border:1px solid var(--line); box-shadow:0 8px 24px rgba(15,23,42,.05); }
+    .mega-card h3 { margin:0 0 10px; }
+    .mega-card span { display:inline-flex; margin:0 6px 8px 0; padding:6px 10px; border-radius:999px; background:#f8fafc; border:1px solid #e2e8f0; color:#334155; font-size:12px; font-weight:850; }
+  </style>
+</head>
+<body>
+  <section id="menu-accordion" class="screen layout-side">
+    <div class="option-label">Opcion 1 · Acordeon lateral</div>
+    <aside class="sidebar">
+      <div class="brand side-brand"><div class="logo">R</div><div><strong>RISEK</strong><br><small>Comercial 360</small></div></div>
+      <div class="acc-head">Home</div><div class="acc-item active"><b>DB</b>Dashboard</div><div class="acc-item"><b>FS</b>Sistema Futuro</div>
+      <div class="acc-head">Parametros</div><div class="acc-item"><b>PR</b>Clientes</div><div class="acc-item"><b>PR</b>Productos</div><div class="acc-item"><b>PR</b>Rutas</div><div class="acc-item"><b>PR</b>Bancos</div>
+      <div class="acc-head">Ventas</div><div class="acc-item"><b>VE</b>Facturas</div><div class="acc-item"><b>VE</b>Boletas</div><div class="acc-item"><b>VE</b>Picking</div>
+      <div class="acc-head">Compras</div><div class="acc-item"><b>CP</b>Ordenes</div><div class="acc-item"><b>CP</b>Recepcion</div>
+      <div class="acc-head">Gerencia</div><div class="acc-item"><b>GE</b>KPI</div>
+    </aside>
+    <main><div class="topbar"><div><strong>Dashboard</strong><br><small>Menu ordenado por acordeones compactos</small></div><div><span class="pill">Online</span> <button class="btn red">Nueva NV</button></div></div><div class="content"><div class="hero"><h1>Acordeon potente y familiar</h1><p>Ideal si el sistema tendra muchos modulos y quieres evitar scroll excesivo. Cada grupo se expande/cierra.</p></div><div class="cards"><div class="card"><span>Ventas del dia</span><strong>126</strong></div><div class="card"><span>NV del dia</span><strong>48</strong></div><div class="card"><span>Facturas por entregar</span><strong>73</strong></div><div class="card"><span>Compras 7 dias</span><strong>31</strong></div></div></div></main>
+  </section>
+
+  <section id="menu-topbar" class="screen">
+    <div class="option-label">Opcion 2 · Topbar Bootstrap</div>
+    <div class="topbar dark"><div class="brand"><div class="logo">R</div><div><strong>RISEK</strong><br><small>Comercial 360</small></div></div><div class="topnav"><div class="active">Home</div><div>Parametros</div><div>Ventas</div><div>Compras</div><div>Reportes</div><div>Gerencia</div></div><span class="pill">ADMIN</span></div>
+    <div class="dropdown-row"><div class="drop-card"><b>Parametros</b><span>Clientes</span><span>Productos</span><span>Rutas</span></div><div class="drop-card"><b>Ventas</b><span>Facturas</span><span>Boletas</span><span>Picking</span></div><div class="drop-card"><b>Compras</b><span>Ordenes</span><span>Recepcion</span></div><div class="drop-card"><b>Bodega</b><span>Stock</span><span>Inventario</span></div><div class="drop-card"><b>Reportes</b><span>Ventas</span><span>Stock</span></div><div class="drop-card"><b>Gerencia</b><span>KPI</span><span>Margen</span></div></div>
+    <div class="content"><div class="hero"><h1>Menu superior con mega dropdown</h1><p>Excelente para pantallas amplias y usuarios administrativos. Todo queda arriba, dejando el area completa para grillas.</p></div><div class="cards"><div class="card"><span>Ventas del dia</span><strong>126</strong></div><div class="card"><span>NV del dia</span><strong>48</strong></div><div class="card"><span>Rutas con entrega</span><strong>7</strong></div><div class="card"><span>Compras 7 dias</span><strong>31</strong></div></div></div>
+  </section>
+
+  <section id="menu-rail" class="screen">
+    <div class="option-label">Opcion 3 · Rail compacto + contexto</div>
+    <div class="topbar"><div><strong>Dashboard</strong><br><small>Menu lateral minimo con submenu contextual</small></div><div><span class="pill">Online</span> <button class="btn red">Nueva operacion</button></div></div>
+    <div class="compact-layout"><aside class="rail"><div class="logo">R</div><div class="rail-btn active">DB</div><div class="rail-btn">PR</div><div class="rail-btn">VE</div><div class="rail-btn">CP</div><div class="rail-btn">RP</div><div class="rail-btn">GE</div></aside><main><div class="context-menu"><div class="active">Dashboard</div><div>Sistema Futuro</div><div>Accesos rapidos</div><div>Alertas</div><div>Mi trabajo</div></div><div class="content"><div class="hero"><h1>Mucho espacio para datos</h1><p>Ideal para grillas grandes como Clientes, Productos, Ventas o Picking. El usuario cambia de area en el rail y ve opciones arriba.</p></div><div class="cards"><div class="card"><span>Ventas del dia</span><strong>126</strong></div><div class="card"><span>NV del dia</span><strong>48</strong></div><div class="card"><span>Facturas por entregar</span><strong>73</strong></div><div class="card"><span>Compras 7 dias</span><strong>31</strong></div></div></div></main></div>
+  </section>
+
+  <section id="menu-mega" class="screen">
+    <div class="option-label">Opcion 4 · Mega menu por modulos</div>
+    <div class="topbar dark"><div class="brand"><div class="logo">R</div><div><strong>RISEK</strong><br><small>Comercial 360</small></div></div><div class="topnav"><div class="active">Menu completo</div><div>Favoritos</div><div>Recientes</div><div>Alertas</div></div><span class="pill">ADMIN</span></div>
+    <div class="mega"><div class="hero"><h1>Centro de navegacion completo</h1><p>Una pantalla de menu inicial para usuarios nuevos o para acceder rapido a cualquier mantenedor o proceso.</p></div><div class="mega-grid" style="margin-top:14px"><div class="mega-card"><h3>Parametros</h3><span>Usuarios</span><span>Locales</span><span>Bancos</span><span>Clientes</span><span>Productos</span><span>Rutas</span><span>Cajas</span></div><div class="mega-card"><h3>Ventas</h3><span>Facturas</span><span>Boletas</span><span>Guias</span><span>Notas de credito</span><span>Picking</span><span>NV</span></div><div class="mega-card"><h3>Compras</h3><span>Ordenes</span><span>Recepcion</span><span>Proveedores</span><span>Costos</span></div><div class="mega-card"><h3>Bodega</h3><span>Stock</span><span>Inventario</span><span>Transferencias</span><span>Criticos</span></div><div class="mega-card"><h3>Reportes</h3><span>Ventas</span><span>Clientes</span><span>Stock</span><span>Rutas</span><span>PDF/CSV</span></div><div class="mega-card"><h3>Gerencia</h3><span>KPI</span><span>Margen</span><span>Caja</span><span>Bancos</span><span>Vendedores</span></div></div></div>
+  </section>
+</body>
+</html>

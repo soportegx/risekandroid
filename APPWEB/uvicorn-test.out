@@ -1,0 +1,1 @@
+INFO:     127.0.0.1:52528 - "GET /api/pos/caja/status?local_codigo=02&caja_codigo=1 HTTP/1.1" 500 Internal Server Error

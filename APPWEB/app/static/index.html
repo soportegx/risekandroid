@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RISEK Comercial</title>
+  <link rel="stylesheet" href="/static/styles.css?v=20260614d">
+</head>
+<body>
+  <main id="loginView" class="login-view">
+    <section class="login-hero" aria-label="Ingreso RISEK">
+      <div class="brand-mark">
+        <img src="/static/assets/logo-risek.png" alt="Distribuidora RISEK">
+        <small>Plataforma comercial y logistica</small>
+      </div>
+      <div class="login-glass-title">
+        <strong>Gestion comercial inteligente</strong>
+        <span>Ventas, rutas, picking, compras y control gerencial en una sola plataforma.</span>
+      </div>
+    </section>
+
+    <section class="login-card">
+      <div class="login-title">
+        <p class="eyebrow">Acceso seguro</p>
+        <h2>Entrar al sistema</h2>
+      </div>
+      <form id="loginForm">
+        <label>
+          Local
+          <select id="loginLocal" required>
+            <option value="">Cargando locales...</option>
+          </select>
+        </label>
+        <label>
+          Caja
+          <select id="loginCaja" required disabled>
+            <option value="">Seleccione primero un local</option>
+          </select>
+        </label>
+        <label>
+          Usuario
+          <select id="loginUser" autocomplete="username" required>
+            <option value="">Cargando usuarios...</option>
+          </select>
+        </label>
+        <label>
+          Contrasena
+          <input id="loginPass" type="password" autocomplete="current-password" required>
+        </label>
+        <div class="login-row">
+          <label class="check">
+            <input id="rememberSession" type="checkbox" checked>
+            Recordar sesion
+          </label>
+          <a href="#soporte">Soporte</a>
+        </div>
+        <p id="loginMessage" class="login-message" role="status"></p>
+        <button class="primary wide" type="submit">Ingresar</button>
+      </form>
+    </section>
+  </main>
+
+  <div id="appView" class="app-view is-hidden">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/static/assets/logo-risek.png" alt="RISEK">
+        <div>
+          <strong>RISEK</strong>
+          <small>Comercial</small>
+        </div>
+      </div>
+      <nav id="mainMenu" class="main-menu" aria-label="Menu principal"></nav>
+      <button id="logout" class="ghost logout" type="button">Cerrar sesion</button>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar">
+        <button id="menuToggle" class="icon-button" type="button" aria-label="Abrir menu">MENU</button>
+        <div>
+          <p class="eyebrow">Panel de control</p>
+          <h1 id="pageTitle">Home</h1>
+        </div>
+        <div class="top-actions">
+          <span id="todayLabel" class="status-pill">Online</span>
+          <span id="activeLocal" class="local-pill">Sin local</span>
+          <span id="activeCaja" class="local-pill">Sin caja</span>
+          <span id="activeTime" class="status-pill">--:--</span>
+          <span id="activeUser" class="user-pill">Sin usuario</span>
+          <button class="ghost" type="button">Nueva operacion</button>
+        </div>
+      </header>
+
+      <section id="content" class="content"></section>
+    </section>
+  </div>
+
+  <script src="/static/app.js?v=20260615a"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+1. RISEK Ventas - Bienvenidos a RISEK Ventas. En este video veremos como usar la aplicacion Android para vender en terreno.
+
+2. 1. Login - Primero ingrese con su usuario y clave. No comparta su clave con otros vendedores.
+
+3. 2. Sincronizar - Antes de salir, sincronice. La app conserva la ultima descarga buena para no detener la venta.
+
+4. 3. Nueva NV - Para crear una nota de venta, seleccione cliente, direccion y fecha de entrega.
+
+5. 4. Productos - Puede buscar por codigo, descripcion o familia. Revise precio y descuento maximo antes de vender.
+
+6. 5. UXE, cajas y descuento - Ingrese UXE o cajas segun corresponda. El descuento respeta el maximo autorizado.
+
+7. 6. Carrito - Antes de guardar, revise el carrito. Asi evita pedidos incompletos.
+
+8. 7. Pedidos - En pedidos revise notas guardadas, pendientes y sincronizadas.
+
+9. 8. Cuenta corriente - La cuenta corriente permite informar deuda y entregar PDF al cliente.
+
+10. 9. Dia - Al final de jornada revise ventas del dia y envie notas pendientes.
+
+11. 10. Reporte mensual - El reporte mensual se envia al correo indicado y solo considera al vendedor logueado.
+
+12. Cierre - Con estos pasos, la venta queda ordenada, segura y lista para sincronizar.

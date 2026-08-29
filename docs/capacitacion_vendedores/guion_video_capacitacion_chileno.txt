@@ -1,0 +1,25 @@
+1. RISEK Ventas: Ya equipo, en este video vamos a revisar la app RISEK Ventas, paso a paso, bien aterrizado para el trabajo en ruta.
+
+2. Login: Primero, abra la app. Seleccione su usuario, escriba la clave y presione ingresar. Ojo, la clave es personal.
+
+3. Menu principal: Al entrar, vera el menu inferior. Pedidos, Nueva nota de venta, Dia, Cuenta corriente, Consulta y Sync.
+
+4. Sync: Antes de partir la ruta, entre a Sync y descargue datos. Si aparece ventas operativas, puede seguir trabajando con la ultima descarga buena.
+
+5. Nueva NV: Para vender, entre a Nueva NV. Primero el cliente, despues la direccion de reparto y la fecha de entrega.
+
+6. Agregar producto: En productos, busque por codigo o descripcion. Ingrese UXE o cajas. Si hay descuento, pongalo dentro del maximo permitido.
+
+7. Carrito: Antes de guardar, toque el carrito y revise todo. Esto evita que falten productos o cantidades.
+
+8. Pedidos: En Pedidos puede revisar las notas guardadas, ver detalle y confirmar si ya fueron sincronizadas.
+
+9. Cuenta corriente: En Cuenta corriente puede revisar documentos, saldos y enviar la cartola por PDF o WhatsApp cuando el cliente lo pida.
+
+10. Consulta: Consulta permite responder rapido precios, stock y descuento maximo, sin abrir una nota de venta.
+
+11. Dia: Al final del dia revise sus ventas, abra detalles si hace falta y envie todo lo pendiente.
+
+12. Reporte mensual: Para reporte mensual, desde Sync seleccione mes y ano, ingrese correo y envie. El reporte corresponde al vendedor conectado.
+
+13. Buenas practicas: Listo. Sincronice antes de salir, revise el carrito, envie pendientes al cierre y si hay un error, mande captura con el mensaje exacto.

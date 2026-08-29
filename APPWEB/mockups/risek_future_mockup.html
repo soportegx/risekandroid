@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RISEK Mockup Futuro</title>
+  <style>
+    :root {
+      --red: #e30613;
+      --blue: #0d6efd;
+      --dark: #151923;
+      --ink: #111827;
+      --muted: #64748b;
+      --line: #d9dee7;
+      --bg: #eef2f6;
+      --panel: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #111827;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+    }
+    .screen {
+      width: 1366px;
+      height: 768px;
+      overflow: hidden;
+      background: var(--bg);
+      position: relative;
+      page-break-after: always;
+    }
+    .login {
+      display: grid;
+      grid-template-columns: 1fr 410px;
+      gap: 28px;
+      padding: 28px;
+      color: #fff;
+      background:
+        linear-gradient(115deg, rgba(12,16,24,.96), rgba(12,16,24,.42)),
+        url("../app/static/assets/login-gerencial-risek.png") center / cover no-repeat,
+        #111827;
+    }
+    .login-brand {
+      height: 100%;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 8px;
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(0,0,0,.42), rgba(0,0,0,.06));
+    }
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+    }
+    .brand-box b {
+      padding: 16px 20px;
+      border-radius: 8px;
+      background: var(--red);
+      font-size: 28px;
+    }
+    .login-copy {
+      max-width: 690px;
+      padding: 18px;
+      border-radius: 8px;
+      background: rgba(10,15,23,.38);
+      border: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(10px);
+    }
+    .login-copy h1 {
+      margin: 0;
+      font-size: 56px;
+      line-height: 1;
+    }
+    .login-copy p {
+      color: rgba(255,255,255,.78);
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .login-card {
+      align-self: center;
+      padding: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.95);
+      color: var(--ink);
+      box-shadow: 0 26px 70px rgba(0,0,0,.28);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .login-card h2 {
+      margin: 0 0 20px;
+      font-size: 30px;
+    }
+    label {
+      display: grid;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+    }
+    input, select {
+      height: 42px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 0 12px;
+      background: #fff;
+      font: inherit;
+    }
+    .login-form {
+      display: grid;
+      gap: 16px;
+    }
+    .primary, .ghost {
+      height: 42px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      padding: 0 14px;
+      font-weight: 900;
+      font: inherit;
+    }
+    .primary { background: var(--red); color: #fff; }
+    .ghost { background: #fff; border-color: var(--line); color: var(--ink); }
+    .hint { color: var(--muted); font-size: 12px; }
+    .app {
+      display: grid;
+      grid-template-columns: 278px 1fr;
+    }
+    .sidebar {
+      height: 768px;
+      padding: 18px;
+      color: #fff;
+      background: linear-gradient(180deg, #212529, #111827);
+    }
+    .side-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--red);
+      font-size: 24px;
+      font-weight: 950;
+    }
+    .side-brand small { color: rgba(255,255,255,.62); }
+    .nav-title {
+      height: 38px;
+      margin: 10px 0 5px;
+      padding: 0 10px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+    }
+    .nav-title:after {
+      content: "v";
+      color: rgba(255,255,255,.58);
+      font-size: 11px;
+    }
+    .nav-item {
+      height: 34px;
+      border-radius: 6px;
+      margin: 0 0 5px 12px;
+      padding: 0 9px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: rgba(255,255,255,.88);
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.08);
+      font-weight: 850;
+      font-size: 12px;
+    }
+    .nav-item.active {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(13,110,253,.22);
+    }
+    .nav-item b {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.14);
+      font-size: 10px;
+    }
+    .workspace { min-width: 0; }
+    .topbar {
+      height: 76px;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(248,250,252,.94);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar h1 { margin: 0; font-size: 26px; }
+    .top-actions { display: flex; align-items: center; gap: 10px; }
+    .pill {
+      min-height: 28px;
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 0 10px;
+      background: #dcfce7;
+      color: #166534;
+      font-size: 12px;
+      font-weight: 900;
+    }
+    .user-pill { background: #fff; color: #1e293b; border: 1px solid var(--line); }
+    .content { padding: 22px; }
+    .hero {
+      min-height: 190px;
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      color: #fff;
+      background:
+        linear-gradient(110deg, rgba(12,16,24,.98), rgba(12,16,24,.7), rgba(227,6,19,.42)),
+        url("../app/static/assets/login-gerencial-risek.png") center / cover no-repeat;
+      box-shadow: 0 18px 48px rgba(15,23,42,.16);
+    }
+    .hero h2 { margin: 0; font-size: 42px; line-height: 1; }
+    .hero p { max-width: 650px; color: rgba(255,255,255,.78); }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .card, .panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(15,23,42,.05);
+    }
+    .card {
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 78px;
+      height: 5px;
+      background: var(--red);
+    }
+    .card span { color: var(--muted); font-size: 13px; font-weight: 850; }
+    .card strong { display: block; margin-top: 8px; font-size: 28px; }
+    .card small { color: #16a34a; font-weight: 900; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 14px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .panel { padding: 16px; }
+    .panel h3 { margin: 0 0 10px; font-size: 19px; }
+    .bar { display: grid; gap: 7px; margin: 13px 0; }
+    .bar label { display: flex; justify-content: space-between; color: var(--ink); }
+    .track { height: 13px; border-radius: 999px; background: #e5e7eb; overflow: hidden; }
+    .track i { display: block; height: 100%; background: linear-gradient(90deg, var(--red), var(--blue)); }
+    .quick-ribbon {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+    }
+    .quick {
+      min-height: 76px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+    }
+    .quick b {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--blue);
+    }
+    .quick strong, .quick small { display: block; }
+    .quick small { color: var(--muted); margin-top: 3px; }
+    .future-map {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .module {
+      min-height: 135px;
+      padding: 13px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+    .module h4 { margin: 0 0 8px; }
+    .module span {
+      display: inline-flex;
+      margin: 0 5px 7px 0;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      color: #334155;
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .filterbar {
+      min-height: 54px;
+      display: grid;
+      grid-template-columns: 42px 52px 250px minmax(240px, 1fr) 210px auto;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      background: #f1f3f5;
+      border-top: 5px solid var(--red);
+      border-radius: 8px 8px 0 0;
+    }
+    .filterbar label {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 8px;
+      color: #111827;
+      font-size: 12px;
+    }
+    .tool {
+      height: 34px;
+      border: 0;
+      border-radius: 6px;
+      background: #fff;
+      color: #111827;
+      font-weight: 950;
+      box-shadow: inset 0 0 0 1px var(--line);
+    }
+    .tool.add { color: var(--red); font-size: 30px; line-height: 1; }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      font-size: 13px;
+    }
+    .data-table th {
+      height: 34px;
+      color: #fff;
+      background: #adb5bd;
+      text-align: left;
+      padding: 0 10px;
+      font-size: 12px;
+    }
+    .data-table td {
+      height: 32px;
+      border-bottom: 1px solid #edf0f3;
+      padding: 0 10px;
+      font-weight: 750;
+    }
+    .data-table tr:nth-child(even) { background: #f8f9fa; }
+    .mini { color: var(--blue); font-weight: 950; margin-right: 5px; }
+    .state { font-weight: 950; }
+    .client-form {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      overflow: hidden;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 18px;
+      padding: 12px 16px;
+    }
+    .form-grid label {
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .form-grid input, .form-grid select { height: 30px; color: var(--red); font-weight: 750; }
+    .strip { padding: 10px 16px; background: #f8f9fa; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 16px; }
+    .form-bottom { grid-template-columns: repeat(6, 1fr); }
+    .form-bottom label { grid-template-columns: 1fr; }
+    .money-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .doc-card {
+      padding: 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .doc-card strong { display: block; font-size: 20px; }
+    .pick-preview {
+      height: 360px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .pick-title {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      border-bottom: 1px solid #111;
+      font-weight: 900;
+    }
+    .pick-rows div {
+      display: grid;
+      grid-template-columns: 120px 1fr 80px 80px 80px 100px;
+      height: 24px;
+      align-items: center;
+      padding: 0 12px;
+      border-bottom: 1px solid #111;
+      font-size: 12px;
+    }
+    .queue div {
+      display: grid;
+      grid-template-columns: 10px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      margin-bottom: 9px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+    .queue i { height: 36px; border-radius: 999px; background: var(--red); }
+    .queue p { margin: 0; }
+    .queue small { color: var(--muted); }
+    .route-delivery {
+      display: grid;
+      gap: 10px;
+    }
+    .route-delivery div {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+    .route-delivery strong,
+    .route-delivery small {
+      display: block;
+    }
+    .route-delivery small {
+      color: var(--muted);
+      margin-top: 3px;
+    }
+    .route-delivery b {
+      min-width: 48px;
+      height: 34px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: var(--red);
+    }
+    .seven-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      align-items: end;
+      height: 172px;
+      margin-top: 16px;
+    }
+    .day-bar {
+      display: grid;
+      align-content: end;
+      gap: 6px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+    }
+    .day-bar i {
+      display: block;
+      min-height: 28px;
+      border-radius: 6px 6px 0 0;
+      background: linear-gradient(180deg, var(--blue), var(--red));
+    }
+  </style>
+</head>
+<body>
+  <section id="login" class="screen login">
+    <div class="login-brand">
+      <div class="brand-box"><b>RISEK</b><span>APPWEB Comercial</span></div>
+      <div class="login-copy">
+        <h1>Control comercial de alto nivel.</h1>
+        <p>Acceso seguro para operar ventas, compras, picking, bodega y gerencia desde una plataforma ejecutiva.</p>
+      </div>
+    </div>
+    <div class="login-card">
+      <p class="eyebrow">Acceso seguro</p>
+      <h2>Entrar al sistema</h2>
+      <div class="login-form">
+        <label>Usuario<select><option>ADMINISTRADOR / Vendedor 01</option><option>VENTAS PUERTO MONTT</option><option>BODEGA</option></select></label>
+        <label>Contrasena<input type="password" value="********"></label>
+        <button class="primary">Ingresar</button>
+        <p class="hint">Usuarios desde tabla secuser. Password validado en servidor.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="screen app">
+    <aside class="sidebar">
+      <div class="side-brand"><div class="logo">R</div><div><strong>RISEK</strong><br><small>Comercial 360</small></div></div>
+      <div class="nav-title">Home</div><div class="nav-item active"><b>DB</b>Dashboard</div><div class="nav-item"><b>FS</b>Sistema Futuro</div>
+      <div class="nav-title">Parametros</div><div class="nav-item"><b>PR</b>Clientes</div><div class="nav-item"><b>PR</b>Productos</div><div class="nav-item"><b>PR</b>Rutas</div><div class="nav-item"><b>PR</b>Bancos</div>
+      <div class="nav-title">Ventas</div><div class="nav-item"><b>VE</b>Facturas</div><div class="nav-item"><b>VE</b>Boletas</div><div class="nav-item"><b>VE</b>Picking</div>
+      <div class="nav-title">Gerencia</div><div class="nav-item"><b>GE</b>Indicadores KPI</div>
+    </aside>
+    <main class="workspace">
+      <div class="topbar"><div><p class="eyebrow">Panel de control</p><h1>Dashboard</h1></div><div class="top-actions"><span class="pill">Online</span><span class="pill user-pill">ADMINISTRADOR</span><button class="ghost">Nueva operacion</button></div></div>
+      <div class="content">
+        <div class="hero"><div><p class="eyebrow">Operacion diaria</p><h2>Resumen comercial por cantidad.</h2><p>Panel operativo sin montos: documentos emitidos, notas de venta, rutas con facturas por entregar y compras recientes.</p></div><div><button class="primary">Nueva NV</button> <button class="ghost">Generar picking</button></div></div>
+        <div class="kpis"><div class="card"><span>Ventas del dia</span><strong>126</strong><small>Documentos emitidos</small></div><div class="card"><span>NV del dia</span><strong>48</strong><small>Notas de venta abiertas</small></div><div class="card"><span>Facturas por entregar</span><strong>73</strong><small>Distribuidas en 7 rutas</small></div><div class="card"><span>Compras 7 dias</span><strong>31</strong><small>OC y recepciones</small></div></div>
+        <div class="grid-2"><div class="panel"><h3>Rutas con facturas por entregar</h3><div class="route-delivery"><div><span><strong>CALBUCO</strong><small>Ruta 11 · prioridad alta</small></span><b>18</b></div><div><span><strong>PUERTO MONTT</strong><small>Ruta 03 · despacho normal</small></span><b>24</b></div><div><span><strong>LLANQUIHUE</strong><small>Ruta 08 · revision bodega</small></span><b>11</b></div><div><span><strong>ALERCE</strong><small>Ruta 09 · pendientes por picking</small></span><b>9</b></div><div><span><strong>MAULLIN</strong><small>Ruta 14 · documentos listos</small></span><b>7</b></div></div></div><div class="panel"><h3>Compras ultimos 7 dias</h3><div class="seven-days"><div class="day-bar"><i style="height:72px"></i><span>Vie<br>4</span></div><div class="day-bar"><i style="height:48px"></i><span>Sab<br>2</span></div><div class="day-bar"><i style="height:34px"></i><span>Dom<br>1</span></div><div class="day-bar"><i style="height:96px"></i><span>Lun<br>6</span></div><div class="day-bar"><i style="height:126px"></i><span>Mar<br>9</span></div><div class="day-bar"><i style="height:84px"></i><span>Mie<br>5</span></div><div class="day-bar"><i style="height:64px"></i><span>Jue<br>4</span></div></div></div></div>
+      </div>
+    </main>
+  </section>
+
+  <section id="future" class="screen app">
+    <aside class="sidebar">
+      <div class="side-brand"><div class="logo">R</div><div><strong>RISEK</strong><br><small>Comercial 360</small></div></div>
+      <div class="nav-title">Home</div><div class="nav-item"><b>DB</b>Dashboard</div><div class="nav-item active"><b>FS</b>Sistema Futuro</div>
+      <div class="nav-title">Parametros</div><div class="nav-item"><b>PR</b>Clientes</div><div class="nav-item"><b>PR</b>Productos</div><div class="nav-item"><b>PR</b>Proveedores</div>
+      <div class="nav-title">Ventas</div><div class="nav-item"><b>VE</b>Facturas</div><div class="nav-item"><b>VE</b>Guias</div><div class="nav-item"><b>VE</b>Notas Credito</div><div class="nav-item"><b>VE</b>Picking</div>
+      <div class="nav-title">Reportes</div><div class="nav-item"><b>RP</b>Ventas</div><div class="nav-item"><b>GE</b>Gerencia</div>
+    </aside>
+    <main class="workspace">
+      <div class="topbar"><div><p class="eyebrow">Mockup futuro</p><h1>RISEK Suite Comercial 360</h1></div><div class="top-actions"><span class="pill">v2.0</span><span class="pill user-pill">ADMINISTRADOR</span></div></div>
+      <div class="content">
+        <div class="quick-ribbon"><div class="quick"><b>NV</b><span><strong>Nueva venta</strong><small>Factura, boleta o guia</small></span></div><div class="quick"><b>PK</b><span><strong>Picking</strong><small>PDF por ruta</small></span></div><div class="quick"><b>CL</b><span><strong>Cliente</strong><small>Buscar o editar</small></span></div><div class="quick"><b>PR</b><span><strong>Producto</strong><small>Precio y stock</small></span></div><div class="quick"><b>CP</b><span><strong>Compra</strong><small>Recepcion</small></span></div><div class="quick"><b>GE</b><span><strong>Gerencia</strong><small>KPI y margen</small></span></div></div>
+        <div class="grid-2"><div class="panel"><h3>Mapa modular completo</h3><div class="future-map"><div class="module"><h4>Parametros</h4><span>Usuarios</span><span>Clientes</span><span>Productos</span><span>Rutas</span><span>Cajas</span></div><div class="module"><h4>Ventas</h4><span>Facturas</span><span>Boletas</span><span>Guias</span><span>NC</span><span>Picking</span></div><div class="module"><h4>Compras</h4><span>Ordenes</span><span>Recepcion</span><span>Costos</span><span>Proveedor</span></div><div class="module"><h4>Bodega</h4><span>Stock</span><span>Inventario</span><span>Transferencias</span><span>Criticos</span></div><div class="module"><h4>Reportes</h4><span>Ventas</span><span>Clientes</span><span>Stock</span><span>Rutas</span></div><div class="module"><h4>Gerencia</h4><span>KPI</span><span>Margen</span><span>Caja</span><span>Bancos</span></div></div></div><div class="panel queue"><h3>Alertas inteligentes</h3><div><i></i><p><b>Facturas listas para picking</b><br><small>32 documentos</small></p><b>Alta</b></div><div><i></i><p><b>Clientes sin ruta</b><br><small>8 fichas</small></p><b>Media</b></div><div><i></i><p><b>Stock critico</b><br><small>14 SKU</small></p><b>Alta</b></div><div><i></i><p><b>Compras por recepcionar</b><br><small>5 OC</small></p><b>Media</b></div></div></div>
+      </div>
+    </main>
+  </section>
+
+  <section id="clientes" class="screen app">
+    <aside class="sidebar"><div class="side-brand"><div class="logo">R</div><div><strong>RISEK</strong><br><small>Comercial 360</small></div></div><div class="nav-title">Parametros</div><div class="nav-item active"><b>PR</b>Clientes</div><div class="nav-item"><b>PR</b>Productos</div><div class="nav-item"><b>PR</b>Proveedores</div><div class="nav-title">Ventas</div><div class="nav-item"><b>VE</b>Facturas</div><div class="nav-item"><b>VE</b>Picking</div></aside>
+    <main class="workspace"><div class="topbar"><div><p class="eyebrow">Parametros</p><h1>Clientes</h1></div><div class="top-actions"><span class="pill">Base real</span><button class="primary">Nuevo cliente</button></div></div><div class="content"><div class="filterbar"><button class="tool add">+</button><button class="tool">CSV</button><label>RUT<input value="15309914-3"></label><label>NOMBRE<input></label><label>RUTA<select><option>CALBUCO</option><option>PUERTO MONTT</option></select></label><button class="primary">Buscar</button></div><table class="data-table"><thead><tr><th>Acciones</th><th>Rut</th><th>Nombre</th><th>Direccion</th><th>Ciudad</th><th>Condicion</th><th>Mail SII</th><th>Estado</th></tr></thead><tbody><tr><td><span class="mini">ED</span><span class="mini">CP</span></td><td>15309914-3</td><td></td><td>NICOLAS VILLEGAS 255 POB. 15 SEPTIEMBRE.</td><td>CALBUCO</td><td>EFECTIVO</td><td></td><td class="state">ACTIVO</td></tr><tr><td><span class="mini">ED</span><span class="mini">CP</span></td><td>7233890-2</td><td></td><td>LOS CARRERA S/N</td><td>MAULLIN</td><td>EFECTIVO</td><td></td><td class="state">ACTIVO</td></tr><tr><td><span class="mini">ED</span><span class="mini">CP</span></td><td>76332892-K</td><td></td><td>RANCAGUA 246</td><td>PUERTO MONTT</td><td>CREDITO 30 DIAS</td><td></td><td class="state">ACTIVO</td></tr><tr><td><span class="mini">ED</span><span class="mini">CP</span></td><td>76585107</td><td></td><td>AV. ANDACOLLO 2390</td><td>PUERTO MONTT</td><td>EFECTIVO</td><td></td><td class="state">ACTIVO</td></tr></tbody></table></div></main>
+  </section>
+
+  <section id="cliente-edit" class="screen app">
+    <aside class="sidebar"><div class="side-brand"><div class="logo">R</div><div><strong>RISEK</strong><br><small>Comercial 360</small></div></div><div class="nav-title">Parametros</div><div class="nav-item active"><b>PR</b>Clientes</div><div class="nav-item"><b>PR</b>Productos</div><div class="nav-title">Ventas</div><div class="nav-item"><b>VE</b>Picking</div></aside>
+    <main class="workspace"><div class="topbar"><div><p class="eyebrow">Ficha cliente</p><h1>Edicion / modificacion</h1></div><div class="top-actions"><button class="primary">Guardar cambios</button><button class="ghost">Cancelar</button></div></div><div class="content"><div class="client-form"><div class="form-grid"><label>Rut<input value="15309914-3"></label><label>Nombre<input value=""></label><label>Direccion<input value="NICOLAS VILLEGAS 255 POB. 15 SEPTIEMBRE."></label><label>Giro<input value="ALMACENES MEDIANOS"></label><label>Telefono<input></label><label>Celular<input value="83201558"></label><label>Mail<input></label><label>Intercambio<input></label><label>Vendedor<select><option>Todos..</option><option>01 ADMINISTRADOR</option></select></label></div><div class="strip">INFORMACION BANCARIA</div><div style="height:52px;background:#f8f9fa;border-bottom:1px solid var(--line)"></div><div class="form-grid form-bottom"><label>Ciudad<select><option>CALBUCO</option></select></label><label>Comuna<select><option>CALBUCO</option></select></label><label>Descuento (%)<input value="0,00"></label><label>Ruta<select><option>CALBUCO</option></select></label><label>Condicion<select><option>EFECTIVO</option></select></label><label>Estado<select><option>ACTIVO</option></select></label><label>Lista<select><option>NORMAL</option></select></label><label>Geo<input value="-41.7720156,-73.1327093"></label><label>Ult. Desbloqueo<input></label></div></div><div class="grid-3" style="margin-top:14px"><div class="panel"><h3>Cuenta corriente</h3><p class="hint">Deuda total, documentos pendientes y desbloqueos.</p></div><div class="panel"><h3>Direcciones</h3><p class="hint">Sucursales y puntos de entrega alternativos.</p></div><div class="panel"><h3>Historial</h3><p class="hint">Ventas, notas de credito y condiciones comerciales.</p></div></div></div></main>
+  </section>
+
+  <section id="ventas-picking" class="screen app">
+    <aside class="sidebar"><div class="side-brand"><div class="logo">R</div><div><strong>RISEK</strong><br><small>Comercial 360</small></div></div><div class="nav-title">Ventas</div><div class="nav-item"><b>VE</b>Facturas</div><div class="nav-item"><b>VE</b>Boletas</div><div class="nav-item"><b>VE</b>Guias</div><div class="nav-item active"><b>VE</b>Picking</div><div class="nav-title">Reportes</div><div class="nav-item"><b>RP</b>Picking por ruta</div></aside>
+    <main class="workspace"><div class="topbar"><div><p class="eyebrow">Ventas / Bodega</p><h1>Picking Comercial</h1></div><div class="top-actions"><button class="primary">Generar PDF</button><button class="ghost">Vista previa</button></div></div><div class="content"><div class="filterbar" style="grid-template-columns:220px 260px 260px auto auto"><label>FECHA<input value="05-06-2026"></label><label>RUTA<select><option>Todas</option><option>CALBUCO</option></select></label><label>VENDEDOR<select><option>Todos</option></select></label><button class="ghost">Vista previa</button><button class="primary">Generar PDF</button></div><div class="kpis"><div class="card"><span>Productos</span><strong>214</strong><small>Lineas consolidadas</small></div><div class="card"><span>Kilos</span><strong>8.937,83</strong><small>Total preparado</small></div><div class="card"><span>Unidades</span><strong>14.618</strong><small>Un. vendidas</small></div><div class="card"><span>Documentos</span><strong>126</strong><small>FE, FA y BO</small></div></div><div class="grid-2"><div class="pick-preview"><div class="pick-title"><span>RICARDO SEPULVEDA KURTEN DIST.EIRL</span><strong>PICKING 05/06/26</strong><span>Hora 10:45</span></div><div class="pick-rows"><div><b>CODIGO</b><b>DESCRIPCION</b><b>CAJAS</b><b>RESTO</b><b>KILOS</b><b>UN.VENDIDAS</b></div><div><span>1001780</span><span>CREAM CHEESE GREEN BAY 10 X 1.36 KG</span><span></span><span>3</span><span>4,08</span><span>3,00</span></div><div><span>5470051</span><span>LUCCHETTI SPAGHETTI 5 25X400</span><span>2,000</span><span>14</span><span>25,60</span><span>64,00</span></div><div><span>AC0214</span><span>ACEITE VEGETAL LOS SILOS 12X900 CC</span><span>69,000</span><span>6</span><span>750,60</span><span>834,00</span></div><div><span>9010134</span><span>ACEITUNA HUASCO TRAVERSO 24X200</span><span>1,000</span><span>8</span><span>6,40</span><span>32,00</span></div></div></div><div class="panel queue"><h3>Preparacion por ruta</h3><div><i></i><p><b>CALBUCO</b><br><small>32 documentos</small></p><b>Alta</b></div><div><i></i><p><b>PUERTO MONTT</b><br><small>51 documentos</small></p><b>Media</b></div><div><i></i><p><b>LLANQUIHUE</b><br><small>18 documentos</small></p><b>Media</b></div></div></div></div></main>
+  </section>
+
+  <section id="gerencia" class="screen app">
+    <aside class="sidebar"><div class="side-brand"><div class="logo">R</div><div><strong>RISEK</strong><br><small>Comercial 360</small></div></div><div class="nav-title">Gerencia</div><div class="nav-item active"><b>GE</b>Indicadores KPI</div><div class="nav-item"><b>GE</b>Margenes</div><div class="nav-item"><b>GE</b>Caja y bancos</div><div class="nav-title">Reportes</div><div class="nav-item"><b>RP</b>Ventas</div><div class="nav-item"><b>RP</b>Stock</div></aside>
+    <main class="workspace"><div class="topbar"><div><p class="eyebrow">Gerencia</p><h1>Indicadores ejecutivos</h1></div><div class="top-actions"><span class="pill">Junio 2026</span><button class="ghost">Exportar</button></div></div><div class="content"><div class="kpis"><div class="card"><span>Ventas mes</span><strong>$428.7M</strong><small>+8.4%</small></div><div class="card"><span>Margen promedio</span><strong>23.4%</strong><small>Meta 25%</small></div><div class="card"><span>Cobranza al dia</span><strong>84%</strong><small>Clientes activos</small></div><div class="card"><span>Rutas cumplidas</span><strong>91%</strong><small>Despacho</small></div></div><div class="grid-2"><div class="panel"><h3>Resultado comercial</h3><div class="bar"><label><span>Ventas</span><b>$428.7M</b></label><div class="track"><i style="width:78%"></i></div></div><div class="bar"><label><span>Margen</span><b>23.4%</b></label><div class="track"><i style="width:62%"></i></div></div><div class="bar"><label><span>Compras</span><b>$186.3M</b></label><div class="track"><i style="width:55%"></i></div></div><div class="bar"><label><span>Caja y bancos</span><b>$74.2M</b></label><div class="track"><i style="width:72%"></i></div></div></div><div class="panel queue"><h3>Decisiones sugeridas</h3><div><i></i><p><b>Revisar margen familia 24</b><br><small>Margen bajo promedio</small></p><b>Alta</b></div><div><i></i><p><b>Ajustar stock critico</b><br><small>14 productos bajo minimo</small></p><b>Alta</b></div><div><i></i><p><b>Clientes credito vencido</b><br><small>8 cuentas con alerta</small></p><b>Media</b></div></div></div><div class="money-grid"><div class="doc-card"><span>Top vendedor</span><strong>Puerto Montt</strong><small>$82.1M</small></div><div class="doc-card"><span>Top ruta</span><strong>CALBUCO</strong><small>91% cumplimiento</small></div><div class="doc-card"><span>Producto estrella</span><strong>ACEITE VEGETAL</strong><small>834 unidades</small></div><div class="doc-card"><span>Alertas abiertas</span><strong>27</strong><small>Operativas</small></div></div></div></main>
+  </section>
+</body>
+</html>
