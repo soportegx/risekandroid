@@ -1,5 +1,5 @@
 {
-  "version_code": 103,
-  "version_name": "1.1.01-cta-nc-fix",
+  "version_code": 104,
+  "version_name": "1.1.02-cta-nc-fix",
   "notes": "Cuenta corriente: NC descuentan saldo, reportes muestran solo documentos pendientes y coinciden con pantalla"
 }
